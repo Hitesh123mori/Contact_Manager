@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "372424062410",
+    "project_id": "contactmanger-555fd",
+    "storage_bucket": "contactmanger-555fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372424062410:android:0b26f2f260fc9a90d3cb33",
+        "android_client_info": {
+          "package_name": "com.example.contactmanger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgn6oi-QMfJtsKWkD_jywGgZrrC0sYb7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
