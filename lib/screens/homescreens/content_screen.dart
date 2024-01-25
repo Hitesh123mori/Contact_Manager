@@ -204,6 +204,7 @@ class _ContentScreenState extends State<ContentScreen> {
                       }),
                 ),
                 floatingActionButton:FloatingActionButton(
+                  backgroundColor: AppColors.theme['appbarColor'],
                   onPressed: (){
                     Navigator.pushReplacement(context, SizeTransition4(AddContact()));
                   },
