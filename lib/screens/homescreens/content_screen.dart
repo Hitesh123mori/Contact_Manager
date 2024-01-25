@@ -1,13 +1,10 @@
 import 'dart:convert';
 
 import 'package:contactmanger/effects/transition4.dart';
-import 'package:contactmanger/effects/transition5.dart';
 import 'package:contactmanger/models/binary_search_tree/contact.dart';
 import 'package:contactmanger/screens/homescreens/drawer_screen.dart';
 import 'package:contactmanger/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:fab_circular_menu/fab_circular_menu.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +35,6 @@ class ContentScreen extends StatefulWidget {
 }
 
 class _ContentScreenState extends State<ContentScreen> {
-  final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
   bool isDrawerOpen = false;
   double xOffset = 0;
   double yOffset = 0;
@@ -103,6 +99,17 @@ class _ContentScreenState extends State<ContentScreen> {
                 backgroundColor: AppColors.theme['backgroundColor'],
                 appBar: AppBar(
                   actions: [
+                    IconButton(
+                      onPressed: () {
+                        QrCodeScanner(value);
+                      },
+                      icon: Icon(
+                        Icons.document_scanner_outlined,
+                        size: 25,
+                        color: Colors.black,
+                      ),
+                    ),
+                   SizedBox(width: 8,),
                    recyclebin ? Container() : Padding(
                       padding: const EdgeInsets.only(right: 12.0),
                       child: isSeaching ? IconButton(
@@ -196,64 +203,11 @@ class _ContentScreenState extends State<ContentScreen> {
                         });
                       }),
                 ),
-                floatingActionButton: Builder(
-                  builder: (context) => FabCircularMenu(
-                    key: fabKey,
-                    ringColor: AppColors.theme['ringColor'],
-                    alignment: Alignment.bottomRight,
-                    ringDiameter: 500,
-                    ringWidth: 150,
-                    fabSize: 64,
-                    fabElevation: 8,
-                    fabIconBorder: CircleBorder(),
-                    fabColor: AppColors.theme['appbarColor'],
-                    fabOpenIcon: Icon(Icons.menu),
-                    fabCloseIcon: Icon(Icons.close_sharp),
-                    fabMargin: EdgeInsets.all(16),
-                    animationCurve: Curves.easeInOutCirc,
-                    children: [
-                      RawMaterialButton(
-                        onPressed: () {
-                          QrCodeScanner(value);
-                        },
-                        shape: CircleBorder(),
-                        child: Icon(
-                          Icons.document_scanner_outlined,
-                          size: 25,
-                          color: Colors.black,
-                        ),
-                      ),
-                      RawMaterialButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(context, SizeTransition4(AddContact()));
-                        },
-                        shape: CircleBorder(),
-                        child: Icon(
-                          Icons.add,
-                          size: 25,
-                          color: Colors.black,
-                        ),
-                      ),
-                      RawMaterialButton(
-                        onPressed: () {},
-                        shape: CircleBorder(),
-                        child: Icon(
-                          Icons.picture_as_pdf,
-                          size: 25,
-                          color: Colors.black,
-                        ),
-                      ),
-                      RawMaterialButton(
-                        onPressed: () {},
-                        shape: CircleBorder(),
-                        child: Icon(
-                          Icons.table_chart_rounded,
-                          size: 25,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
+                floatingActionButton:FloatingActionButton(
+                  onPressed: (){
+                    Navigator.pushReplacement(context, SizeTransition4(AddContact()));
+                  },
+                  child: Icon(Icons.add,size: 25,color: Colors.black,),
                 ),
                 body: SingleChildScrollView(
                   child: Column(

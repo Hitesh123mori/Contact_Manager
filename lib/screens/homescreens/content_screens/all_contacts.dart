@@ -2,7 +2,6 @@ import 'package:contactmanger/models/binary_search_tree/binary_tree.dart';
 import 'package:contactmanger/models/binary_search_tree/Operations.dart';
 import 'package:contactmanger/screens/homescreens/content_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:provider/provider.dart';
 
 import '../../../custom_widgets/contact_card.dart';
